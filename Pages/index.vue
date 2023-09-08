@@ -1,6 +1,6 @@
 <template>
     <main class="home-page">
-        <section class="hero">
+        <section id="hero">
             <div class="hero-right">
                 <h1>Richard Alvin Pratama,<br>Software Engineer</h1>
                 <div class="hero-right-icon">
@@ -39,7 +39,7 @@
 
             </div> -->
         </section>
-        <section class="info">
+        <section id="info">
             <div class="info-container">
                 <div class="div1">About</div>
                 <div class="div2">Project</div>
@@ -48,11 +48,19 @@
                 <div class="div5">Connect</div>
             </div>
         </section>
+        <section id="skills">
+            <h1>My Skills</h1>
+            <div class="skill-collection">
+                <div>
+
+                </div>
+            </div>
+        </section>
     </main>
 </template>
 
 <style scoped>
-.hero{
+#hero{
     height: 600px;
     overflow: hidden;
     width:100%;
@@ -92,7 +100,7 @@
     font-size: 25px;
 }
 
-.info{
+#info{
     background-color:#9bb0c2;
     padding: 60px 5%;
 }
@@ -119,6 +127,16 @@
     padding: 40px 20px;
     font-size: 40px;
     color: white;
+}
+
+#skills{
+    height:500px;
+}
+
+#skills h1{
+    text-align: center;
+    color: white;
+    font-size: 60px;
 }
 
 </style>
