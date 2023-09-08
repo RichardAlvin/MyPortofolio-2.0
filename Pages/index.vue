@@ -60,31 +60,41 @@
         <section id="skills">
             <h1>My Skills</h1>
             <div class="skill-collection">
-                <div>
-                    <h1>test</h1>
+                <div class="skill-net">
                 </div>
-                <div>
-                    <h1>test</h1>
+                <div class="skill-laravel">
                 </div>
-                <div>
-                    <h1>test</h1>
+                <div class="skill-flask">
                 </div>
-                <div>
-                    <h1>test</h1>
+                <div class="skill-node">
                 </div>
-                <div>
-                    <h1>test</h1>
+                <div class="skill-sqlserver">
                 </div>
-                <div>
-                    <h1>test</h1>
+                <div class="skill-mysql">
                 </div>
-                <div>
-                    <h1>test</h1>
+                <div class="skill-nuxtjs">
                 </div>
-                <div>
-                    <h1>test</h1>
+                <div class="skill-redhat">
+                </div>
+                <div class="skill-gcp">
+                </div>
+                <div class="skill-aws">
+                </div>
+                <div class="skill-azure">
+                </div>
+                <div class="skill-alibaba">
+                </div>
+                <div class="skill-arduino">
+                </div>
+                <div class="skill-python">
                 </div>
             </div>
+        </section>
+        <section id="certifications">
+
+        </section>
+        <section id="faq">
+
         </section>
     </main>
 </template>
@@ -159,7 +169,6 @@
 }
 
 #info{
-    background-color:#242526;
     padding: 60px 5%;
 }
 
@@ -187,6 +196,7 @@
 }
 
 #skills{
+    background-color:#242526;
     padding: 60px 10%;
 }
 
@@ -204,8 +214,34 @@
 
 .skill-collection div{
     background-color: black;
-    padding: 10px 20px;
+    background-size: cover;
+    height: 200px;
     color: white;
+}
+
+.skill-net{ background-image: url("~/assets/img/skill-icon/net.jpg")}
+.skill-laravel{ background-image: url("~/assets/img/skill-icon/laravel.png")}
+.skill-flask{ background-image: url("~/assets/img/skill-icon/flask.png")}
+.skill-node{ background-image: url("~/assets/img/skill-icon/node.jpg")}
+.skill-sqlserver{ background-image: url("~/assets/img/skill-icon/sqlserver.jpg")}
+.skill-mysql{ background-image: url("~/assets/img/skill-icon/mysql.png")}
+.skill-nuxtjs{ background-image: url("~/assets/img/skill-icon/nuxtjs.png")}
+.skill-redhat{ background-image: url("~/assets/img/skill-icon/redhat.webp")}
+.skill-gcp{ background-image: url("~/assets/img/skill-icon/gcp.png")}
+.skill-aws{ background-image: url("~/assets/img/skill-icon/aws.jpg")}
+.skill-azure{ background-image: url("~/assets/img/skill-icon/azure.webp")}
+.skill-alibaba{ background-image: url("~/assets/img/skill-icon/alibaba.webp")}
+.skill-arduino{ background-image: url("~/assets/img/skill-icon/arduino.jpg")}
+.skill-python{ background-image: url("~/assets/img/skill-icon/python.webp")}
+
+
+#certifications{
+    height:300px;
+}
+
+#faq{
+    background-color:#242526;
+    height:300px; 
 }
 
 </style>

@@ -1,7 +1,7 @@
 <template>
     <footer>
         <div class="footer-info">
-            <h3>Mystery Code</h3>
+            <h1>Mystery Code</h1>
             <p>Mystery Code is a blog website where you will find great tutorials on web design <br>
             and development. Here each tutorial is beautifully described step by step with <br>
             the required source code.</p>
