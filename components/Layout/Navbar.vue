@@ -6,10 +6,10 @@
                 <img src="~/assets/img/logo.png" alt="My Logo"/>
             </div>
         </li>
-        <li class="second-child"><a href="/">Home</a></li>
-        <li><a href="/project">Projects</a></li>
-        <li><a href="/article">Articles</a></li>
-        <li><a href="https://docs.google.com/document/d/11IuNP9FyhCVXl6XM002H7dBl5NrFMz1i3Lvjmccxt8M/edit">CV</a></li>
+        <li class="second-child"><nuxt-link to="/">Home</nuxt-link></li>
+        <li><nuxt-link to="/project">Projects</nuxt-link></li>
+        <li><nuxt-link to="/article">Articles</nuxt-link></li>
+        <li><nuxt-link to="https://docs.google.com/document/d/11IuNP9FyhCVXl6XM002H7dBl5NrFMz1i3Lvjmccxt8M/edit">CV</nuxt-link></li>
       </ul>
     </nav>
 </template>
@@ -44,5 +44,9 @@
     text-decoration: none;
     color: #fff;
     font-size: 30px;
+    }
+
+    a.router-link-active{
+        color:#0dd354;
     }
 </style>
