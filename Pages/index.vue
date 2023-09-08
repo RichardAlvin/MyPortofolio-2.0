@@ -39,12 +39,21 @@
 
             </div> -->
         </section>
+        <section class="info">
+            <div class="info-container">
+                <div class="div1">About</div>
+                <div class="div2">Project</div>
+                <div class="div3">Logo</div>
+                <div class="div4">Article</div>
+                <div class="div5">Connect</div>
+            </div>
+        </section>
     </main>
 </template>
 
 <style scoped>
 .hero{
-    height: 500px;
+    height: 600px;
     overflow: hidden;
     width:100%;
     margin-top: 57px;
@@ -80,7 +89,36 @@
 .hero-right-experience p{
     color: white;
     margin: 0px;
-    font-size: 20px;
+    font-size: 25px;
+}
+
+.info{
+    background-color:#9bb0c2;
+    padding: 60px 5%;
+}
+
+.div1{ grid-area: about;}
+.div2{ grid-area: project;}
+.div3{ grid-area: logo;}
+.div4{ grid-area: article;}
+.div5{ grid-area: connect;}
+
+.info-container{
+    display:grid;
+    grid-template-areas: 
+    'about about about project project'
+    'article article logo project project'
+    'article article connect connect connect';
+    background-color: blue;
+    gap: 10px;
+    padding: 10px;
+}
+
+.info-container > div{
+    background-color: lightblue;
+    padding: 40px 20px;
+    font-size: 40px;
+    color: white;
 }
 
 </style>

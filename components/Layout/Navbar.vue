@@ -18,6 +18,7 @@
     nav {
     color: #fff;
     padding: 20px;
+    padding: 20px 5% 20px 5%;
     }
 
     ul {
