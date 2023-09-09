@@ -4,8 +4,8 @@
             <div class="hero-left">
                 <h1><span style="color:#0dd354">Richard</span> Alvin Pratama,<br>Software Engineer</h1>
                 <div class="hero-left-button">
-                    <a href="">Skills</a>
-                    <a href="">FaQ</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#faq">FaQ</a>
                 </div>
                 <div class="hero-left-experience">
                     <div>
@@ -60,44 +60,65 @@
         <section id="skills">
             <h1>My Skills</h1>
             <div class="skill-collection">
-                <div class="skill-net">
-                </div>
-                <div class="skill-laravel">
-                </div>
-                <div class="skill-flask">
-                </div>
-                <div class="skill-node">
-                </div>
-                <div class="skill-sqlserver">
-                </div>
-                <div class="skill-mysql">
-                </div>
-                <div class="skill-nuxtjs">
-                </div>
-                <div class="skill-redhat">
-                </div>
-                <div class="skill-gcp">
-                </div>
-                <div class="skill-aws">
-                </div>
-                <div class="skill-azure">
-                </div>
-                <div class="skill-alibaba">
-                </div>
-                <div class="skill-arduino">
-                </div>
-                <div class="skill-python">
+                <div v-for="skill in skillList" :key="skill.name" :class="getSkillClassName(skill.name)">
+                    <div class="skill-hover" >
+                        <p>Status: {{ skill.status }}</p>
+                        <p>Experience: {{ skill.experience }}</p>
+                        <p>Projects: {{ skill.projects }}</p>
+                    </div>
                 </div>
             </div>
         </section>
         <section id="certifications">
-
+            <h1>Certifications</h1>
         </section>
         <section id="faq">
+            <h1>Frequently Ask Question</h1>
+            <div class="faq-row">
 
+            </div>
         </section>
     </main>
 </template>
+
+<script>
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
+    setup() {
+        
+    },
+
+    data(){
+        return{
+            skillList: [
+                {name: "net", status: "Advanced", experience: "1.2 Years", projects: "3"},
+                {name: "laravel", status: "Advanced", experience: "2.5 Years", projects: "3"},
+                {name: "flask", status: "Intermediate", experience: "2 Years", projects: "3"},
+                {name: "node", status: "Intermediate", experience: "2.5 Years", projects: "3"},
+                {name: "sqlserver", status: "Advanced", experience: "1.2 Years", projects: "3"},
+                {name: "mysql", status: "Advanced", experience: "3 Years", projects: "3"},
+                {name: "nuxtjs", status: "Intermediate", experience: "0.5 Years", projects: "3"},
+                {name: "redhat", status: "Intermediate", experience: "2 Years", projects: "3"},
+                {name: "gcp", status: "Intermediate", experience: "1.5 Years", projects: "3"},
+                {name: "alibaba", status: "Intermediate", experience: "0.8 Years", projects: "3"},
+                {name: "azure", status: "Basic", experience: "1 Years", projects: "3"},
+                {name: "aws", status: "Basic", experience: "2 Years", projects: "3"},
+                {name: "python", status: "Intermediate", experience: "3 Years", projects: "3"},
+                {name: "arduino", status: "Intermediate", experience: "3 Years", projects: "3"},
+                {name: "git", status: "Advanced", experience: "3.5 years", projects: "3"}
+            ]
+        }
+    },
+
+    methods:{
+        getSkillClassName(name){
+            return `skill-${name} skill-div`;
+        }
+    }
+})
+</script>
+
 
 <style scoped>
 #hero{
@@ -212,14 +233,37 @@
     grid-gap: 20px;
 }
 
-.skill-collection div{
+.skill-collection > div{
     background-color: black;
     background-size: cover;
     height: 200px;
     color: white;
+    position: relative;
+    background-position: center;
 }
 
-.skill-net{ background-image: url("~/assets/img/skill-icon/net.jpg")}
+
+.skill-hover{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+    background-color: rgba(0,0,0, 1);
+    opacity:0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.skill-hover p{
+    font-size: 24px;
+    text-align: center;
+}
+
+.skill-div:hover .skill-hover{
+    opacity: 0.8;
+}
+
+.skill-net{ background-image: url("~/assets/img/skill-icon/net.jpg") }
 .skill-laravel{ background-image: url("~/assets/img/skill-icon/laravel.png")}
 .skill-flask{ background-image: url("~/assets/img/skill-icon/flask.png")}
 .skill-node{ background-image: url("~/assets/img/skill-icon/node.jpg")}
@@ -233,15 +277,26 @@
 .skill-alibaba{ background-image: url("~/assets/img/skill-icon/alibaba.webp")}
 .skill-arduino{ background-image: url("~/assets/img/skill-icon/arduino.jpg")}
 .skill-python{ background-image: url("~/assets/img/skill-icon/python.webp")}
+.skill-git{ background-image: url("~/assets/img/skill-icon/git.png")}
 
 
 #certifications{
     height:300px;
 }
 
+#certifications h1{
+    text-align: center;
+    color: white;
+}
+
 #faq{
     background-color:#242526;
     height:300px; 
+}
+
+#faq h1{
+    text-align: center;
+    color: white;
 }
 
 </style>
