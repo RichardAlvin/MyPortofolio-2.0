@@ -73,9 +73,23 @@
             <h1>Certifications</h1>
         </section>
         <section id="faq">
-            <h1>Frequently Ask Question</h1>
+            <h1>FAQ</h1>
             <div class="faq-row">
-
+                <div class="faq-col">
+                    <h2>Apakah Sudah Lulus Kuliah?</h2>
+                    <p>Yep, sudah lulus kuliah tapi belum wisuda. Sehingga untuk menunggu
+                    saya wisuda, saya bekerja freelance di salah satu perusahaan agensi serta
+                    membantu penelitian dosen dan freelance mandiri.</p>
+                    <hr>
+                    <h2>Sekarang Fokus di Bidang Apa?</h2>
+                    <p>Bidang Software Engineer tugasnya membuat API Service, mengatur database,
+                    mendesain logic sistem, dan merawat sistem.</p>
+                </div>
+                <div class="faq-col">
+                    <h2>Hal lain yang sedang diulik selain bidang software engineer?</h2>
+                    <p>Mempelajari berbagai Cloud Computing Platform, mempelajari nuxt3 untuk frontend dev
+                    , dan suka membuat project project embedded maupun IoT.</p>
+                </div>
             </div>
         </section>
     </main>
@@ -178,11 +192,10 @@ export default defineComponent({
 
 .hero-right{
     flex: 0.1;
-    text-align: center;
 }
 
 .hero-right-icon div:not(:first-child){
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .hero-right-icon a{
@@ -271,12 +284,12 @@ export default defineComponent({
 .skill-mysql{ background-image: url("~/assets/img/skill-icon/mysql.png")}
 .skill-nuxtjs{ background-image: url("~/assets/img/skill-icon/nuxtjs.png")}
 .skill-redhat{ background-image: url("~/assets/img/skill-icon/redhat.webp")}
-.skill-gcp{ background-image: url("~/assets/img/skill-icon/gcp.png")}
+.skill-gcp{ background-image: url("~/assets/img/skill-icon/gcp.jpg")}
 .skill-aws{ background-image: url("~/assets/img/skill-icon/aws.jpg")}
 .skill-azure{ background-image: url("~/assets/img/skill-icon/azure.webp")}
 .skill-alibaba{ background-image: url("~/assets/img/skill-icon/alibaba.webp")}
 .skill-arduino{ background-image: url("~/assets/img/skill-icon/arduino.jpg")}
-.skill-python{ background-image: url("~/assets/img/skill-icon/python.webp")}
+.skill-python{ background-image: url("~/assets/img/skill-icon/python.jpg")}
 .skill-git{ background-image: url("~/assets/img/skill-icon/git.png")}
 
 
@@ -291,12 +304,32 @@ export default defineComponent({
 
 #faq{
     background-color:#242526;
-    height:300px; 
+    padding: 20px 5% 20px 5%; 
 }
 
 #faq h1{
-    text-align: center;
     color: white;
+    font-size: 48px;
+    margin-bottom: 0px;
 }
+
+#faq h2{
+    color: white;
+    font-size: 36px;
+    margin-bottom: 0px;
+}
+
+#faq p{
+    color: white;
+    font-size: 20px;
+    font-weight: 100px;
+}
+
+.faq-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
 
 </style>
