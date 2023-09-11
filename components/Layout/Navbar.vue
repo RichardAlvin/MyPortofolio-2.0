@@ -10,6 +10,7 @@
         <li><nuxt-link to="/project">Projects</nuxt-link></li>
         <li><nuxt-link to="/article">Articles</nuxt-link></li>
         <li><nuxt-link to="https://docs.google.com/document/d/11IuNP9FyhCVXl6XM002H7dBl5NrFMz1i3Lvjmccxt8M/edit">CV</nuxt-link></li>
+        <li><nuxt-link to="https://lucky-torrone-b3f911.netlify.app/">Games</nuxt-link></li>
         <li><label class="switch">
             <input type="checkbox">
             <span class="slider round"></span>
