@@ -1,10 +1,10 @@
 <template>
     <footer>
         <div class="footer-info">
-            <h1>Mystery Code</h1>
-            <p>Mystery Code is a blog website where you will find great tutorials on web design <br>
-            and development. Here each tutorial is beautifully described step by step with <br>
-            the required source code.</p>
+            <h1>Software Engineer Problem</h1>
+            <p>We sometimes think that the logic code we create is efficient. However, there is always new code logic <br>or other code logic
+                that more efficient. So always learn and don't quickly satisfied <br>with what you have got.
+            </p>
         </div>
         <div class="footer-icon">
             <a href="https://www.linkedin.com/in/richard-alvin-pratama-b03a27214/">
