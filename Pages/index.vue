@@ -71,6 +71,30 @@
         </section>
         <section id="certifications">
             <h1>Certifications</h1>
+                <div class="scroll">
+                    <div class="scroll-certi">
+                    <div class="scroll-certi-content">
+
+                    </div>
+                    <div class="scroll-certi-content">
+
+                    </div>
+                    <div class="scroll-certi-content">
+
+                    </div>
+                    <div class="scroll-certi-content">
+
+                    </div>
+                    <div class="scroll-certi-content">
+
+                    </div>
+                    <div class="scroll-certi-content">
+
+                    </div>
+                </div>
+                <button class="scroll-button prev" onclick="scrollContentLeft()">Previous</button>
+                <button class="scroll-button next" onclick="scrollContentRight()">Next</button>
+            </div>
         </section>
         <section id="faq">
             <h1>FAQ</h1>
@@ -295,11 +319,50 @@ export default defineComponent({
 
 #certifications{
     height:300px;
+    padding: 0px 5%;
 }
 
 #certifications h1{
     text-align: center;
     color: white;
+    font-size: 48px;
+}
+
+.scroll{
+    position: relative;
+}
+
+.scroll-certi{
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0 5%;
+}
+
+.scroll-certi-content{
+    border: 1px solid white;
+    display: inline-block;
+    width: 300px;
+    margin-right: 20px;
+}
+
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.scroll-button.next {
+    right: 0;
+}
+
+.scroll-button.prev {
+    left: 0;
 }
 
 #faq{
