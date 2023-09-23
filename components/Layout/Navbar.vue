@@ -1,50 +1,74 @@
 <template>
     <nav id="nav">
-      <ul>
-        <li>
-            <div class="logo">
-                <img src="~/assets/img/logo.png" alt="My Logo"/>
+        <nuxt-link to="/" class="logo"><img src="~/assets/img/logo.png" alt="My Logo"/></nuxt-link>
+        <ul class="nav-menu" :class="{ active: isMobileMenuOpen }">
+            <li class="second-child"><nuxt-link to="/">Home</nuxt-link></li>
+            <li><nuxt-link to="/project">Projects</nuxt-link></li>
+            <li><nuxt-link to="/article">Articles</nuxt-link></li>
+            <li><nuxt-link to="https://docs.google.com/document/d/11IuNP9FyhCVXl6XM002H7dBl5NrFMz1i3Lvjmccxt8M/edit">CV</nuxt-link></li>
+            <li><nuxt-link to="https://lucky-torrone-b3f911.netlify.app/">Games</nuxt-link></li>
+        </ul>
+        <div class="nav-right">
+            <div>
+                <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+                </label>
             </div>
-        </li>
-        <li class="second-child"><nuxt-link to="/">Home</nuxt-link></li>
-        <li><nuxt-link to="/project">Projects</nuxt-link></li>
-        <li><nuxt-link to="/article">Articles</nuxt-link></li>
-        <li><nuxt-link to="https://docs.google.com/document/d/11IuNP9FyhCVXl6XM002H7dBl5NrFMz1i3Lvjmccxt8M/edit">CV</nuxt-link></li>
-        <li><nuxt-link to="https://lucky-torrone-b3f911.netlify.app/">Games</nuxt-link></li>
-        <li><label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-            </label>
-        </li>
-      </ul>
+            <div class="hamburger" :class="{ active: isMobileMenuOpen }" @click="toggleMobileMenu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
     </nav>
 </template>
+
+<script>
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
+    setup() {
+        
+    },
+    data() {
+        return {
+        isMobileMenuOpen: false,
+        };
+    },
+    methods: {
+        toggleMobileMenu() {
+            this.isMobileMenuOpen = !this.isMobileMenuOpen;
+        },
+    },
+})
+</script>
   
 <style scoped>
     nav {
-    color: #fff;
-    padding: 20px;
-    padding: 10px 5% 10px 5%;
+        color: #fff;
+        padding: 0 5% 0 5%;
+        align-items: center;
+        min-height: 100px;
+        display: flex;
     }
 
-    ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    align-items: center;
+    .nav-menu {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 40px;
     }
 
-    li:not(:first-child) {
-        margin-left: 40px;
-    }
-
-    li.second-child{
-        margin-left:80px;
-    }
-
-    li:last-child{
+    .nav-right{
+        display:flex;
         margin-left:auto;
+        gap: 40px;
     }
+
+    /* li:last-child{
+        margin-left:auto;
+    } */
 
     .logo img{
         width:150px;
@@ -58,6 +82,63 @@
 
     a.router-link-active{
         color:#0dd354;
+    }
+
+    .hamburger{
+        display:none;
+    }
+
+    .bar{
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        background-color: white;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .hamburger {
+            display: block;
+            cursor: pointer;
+        }
+
+        .hamburger.active .bar:nth-child(2){
+            opacity:0;
+        }
+
+        .hamburger.active .bar:nth-child(1){
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(3){
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        
+        /* nav{
+            justify-content: space-between;
+        } */
+
+        .nav-menu{
+            position: fixed;
+            left: -100%;
+            top: 70px;
+            gap: 0;
+            flex-direction: column;
+            background-color: black;
+            width: 100%;
+            text-align:center;
+            transition: 0.3s;
+        }
+
+        .nav-menu > li{
+            margin: 16px 0;
+        }
+
+        .nav-menu.active{
+            left:0;
+        }
     }
 
     .switch {
@@ -111,7 +192,6 @@
         transform: translateX(26px);
     }
 
-    /* Rounded sliders */
     .slider.round {
         border-radius: 34px;
     }
@@ -119,4 +199,5 @@
     .slider.round:before {
         border-radius: 50%;
     }
+
 </style>
