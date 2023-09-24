@@ -122,7 +122,7 @@ export default defineComponent({
 
         .nav-menu{
             position: fixed;
-            left: -100%;
+            left: -110%;
             top: 70px;
             gap: 0;
             flex-direction: column;

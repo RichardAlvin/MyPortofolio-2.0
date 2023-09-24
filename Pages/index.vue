@@ -50,11 +50,11 @@
         </section>
         <section id="info">
             <div class="info-container">
-                <div class="div1">About</div>
-                <div class="div2">Project</div>
-                <div class="div3">Logo</div>
-                <div class="div4">Article</div>
-                <div class="div5">Connect</div>
+                <div class="div1"><h1>About</h1></div>
+                <div class="div2"><h1>Project</h1></div>
+                <div class="div3"><h1>Logo</h1></div>
+                <div class="div4"><h1>Article</h1></div>
+                <div class="div5"><h1>Connect</h1></div>
             </div>
         </section>
         <section id="skills">
@@ -162,9 +162,9 @@ export default defineComponent({
 #hero{
     height: 550px;
     overflow: hidden;
-    width:100%;
     margin-top: 57px;
     display: flex;
+    padding: 0 5%;
 }
 
 .hero-left{
@@ -243,14 +243,13 @@ export default defineComponent({
     'article article logo project project'
     'article article connect connect connect';
     gap: 5px;
-    padding: 10px;
 }
 
 .info-container > div{
     background-color: white;
     padding: 40px 20px;
     font-size: 40px;
-    color: white;
+    color: black;
 }
 
 #skills{
@@ -392,6 +391,20 @@ export default defineComponent({
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+    .home-page h1{
+        font-size: 40px;
+    }
+
+    .hero-left-experience p{
+        font-size: 18px;
+    }
+
+    .info-container > div{
+        padding: 10px 5px;
+    }
 }
 
 
