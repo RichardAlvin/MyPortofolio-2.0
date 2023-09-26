@@ -2,8 +2,8 @@
     <footer>
         <div class="footer-info">
             <h1>Software Engineer Problem</h1>
-            <p>We sometimes think that the logic code we create is efficient. However, there is always new code logic <br>or other code logic
-                that more efficient. So always learn and don't quickly satisfied <br>with what you have got.
+            <p>We sometimes think that the logic code we create is efficient. However, there is always new code logic or other code logic
+                that more efficient. So always learn and don't quickly satisfied with what you have got.
             </p>
         </div>
         <div class="footer-icon">
@@ -78,5 +78,11 @@
     color: white;
 }
 
+@media only screen and (max-width: 768px) {
+    .footer-info{
+        line-height: 20px;
+        font-size: 14px;
+    }
+}
 
 </style>

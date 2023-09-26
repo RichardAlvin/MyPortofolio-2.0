@@ -293,6 +293,7 @@ export default defineComponent({
 .skill-hover p{
     font-size: 24px;
     text-align: center;
+    margin: 5px 0px;
 }
 
 .skill-div:hover .skill-hover{
@@ -404,6 +405,63 @@ export default defineComponent({
 
     .info-container > div{
         padding: 10px 5px;
+    }
+
+    #skills h1{
+        font-size:36px;
+    }
+
+    .skill-collection{
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 8px;
+    }
+
+    .skill-collection > div{
+        height: 100px;
+    }
+
+    .skill-hover{
+        position: absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height: 100%;
+        background-color: rgba(0,0,0, 1);
+        opacity:0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .skill-hover p{
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .faq-row{
+        grid-template-columns: 1fr;
+        gap:0px;
+    }
+
+    .faq-col:first-child{
+        border-bottom: 1px solid white;
+    }
+
+    #faq h1{
+    color: white;
+    font-size: 36px;
+    margin-bottom: 0px;
+    }
+
+    #faq h2{
+        color: white;
+        font-size: 24px;
+        margin-bottom: 0px;
+    }
+
+    #faq p{
+        color: white;
+        font-size: 16px;
+        font-weight: 100px;
     }
 }
 
