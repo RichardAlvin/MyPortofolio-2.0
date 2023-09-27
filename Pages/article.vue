@@ -12,7 +12,7 @@
     <section id="artikel">
         <div class="artikel-list">
             <div v-for="article in articleList" :key="article.title" class="artikel-card">
-                <img :src="article.img" />
+                <img src="~/assets/img/skill-icon/arduino.jpg" />
                 <div class="artikel-content">
                     <p>{{ article.created_at }}</p>
                     <h3>{{ article.title }}</h3>
@@ -153,6 +153,17 @@ export default defineComponent({
 
 .btn-load-more button:hover{
     background-color: #0dd354;
+}
+
+@media only screen and (max-width: 768px) {
+    .artikel-card {
+        width: calc(50% - 20px);
+        background-color: white;
+        color: black;
+        box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
+    }
 }
 
 </style>
