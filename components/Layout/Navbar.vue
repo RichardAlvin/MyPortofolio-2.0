@@ -47,7 +47,7 @@ export default defineComponent({
 <style scoped>
     nav {
         color: #fff;
-        padding: 0 5% 0 5%;
+        padding: 1% 5% 0 5%;
         align-items: center;
         min-height: 100px;
         display: flex;
