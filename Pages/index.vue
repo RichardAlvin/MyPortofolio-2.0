@@ -75,9 +75,7 @@
             <div class="info-container">
                 <div class="div1"><img src="~/assets/img/gallery-info/Ghorilard.jpg"/></div>
                 <div class="div2"><img src="~/assets/img/gallery-info/about.jpg"/></div>
-                <div class="div3"><img src="~/assets/img/gallery-info/rupiahDetect.png"></div>
                 <div class="div4"><img src="~/assets/img/gallery-info/sahabatpensiun.png"></div>
-                <div class="div5"><img src="~/assets/img/gallery-info/paddyist.png"></div>
             </div>
         </section>
         <section id="journey">
@@ -278,21 +276,20 @@ export default defineComponent({
     display:grid;
     grid-template-areas: 
     'about about about project project'
-    'article article logo project project'
-    'article article connect connect connect';
+    'article article article project project'
+    'article article article project project';
     gap: 5px;
-}
 
-.info-container > div{
-    background-color: white;
-    padding: 40px 20px;
-    font-size: 40px;
-    color: black;
-}
+    div {
+        box-sizing: border-box;
+        font-size: 40px;
+        color: black;
 
-.info-container > div > img{
-    object-fit: cover;
-    width: 300px;
+        img {
+            object-fit: cover;
+            width: 100%;
+        }
+    }
 }
 
 #journey{
