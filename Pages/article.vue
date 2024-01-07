@@ -11,7 +11,7 @@
     </section>
     <section id="artikel">
         <div class="artikel-list">
-            <div v-for="article in articleList" :key="article.title" class="artikel-card">
+            <div v-for="article in articles.data.data" :key="article.title" class="artikel-card">
                 <img src="~/assets/img/skill-icon/arduino.jpg" />
                 <div class="artikel-content">
                     <p>{{ article.created_at }}</p>
@@ -28,27 +28,41 @@
     </section>
 </template>
 
-<script>
-import { defineComponent } from '@vue/composition-api'
+<script setup lang="ts">
+// import { defineComponent } from '@vue/composition-api'
 
-export default defineComponent({
-    setup() {
-        
-    },
+const articles = ref('');
 
-    data(){
-        return{
-            articleList: [
-                {title: "net", created_at: "12 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
-                {title: "test", created_at: "13 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
-                {title: "fer", created_at: "14 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
-                {title: "net", created_at: "15 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
-                {title: "ghe", created_at: "2 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
-                {title: "net", created_at: "1 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
-            ]
-        }
+const fetchData = async () => {
+    try{
+        const { data: datas } : any = await useAsyncData('articles', () => $fetch(`http://127.0.0.1:8000/api/article`));
+        articles.value = datas._value;
+    }catch (error) {
+        console.error('Error fetching data:', error);
     }
-})
+}
+
+onMounted(() => {
+  fetchData();
+});
+// export default defineComponent({
+//     setup() {
+        
+//     },
+
+//     data(){
+//         return{
+//             articleList: [
+//                 {title: "net", created_at: "12 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
+//                 {title: "test", created_at: "13 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
+//                 {title: "fer", created_at: "14 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
+//                 {title: "net", created_at: "15 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
+//                 {title: "ghe", created_at: "2 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
+//                 {title: "net", created_at: "1 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
+//             ]
+//         }
+//     }
+// })
 </script>
 
 <style scoped>
