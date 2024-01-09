@@ -11,10 +11,10 @@
     </section>
     <section id="artikel">
         <div class="artikel-list">
-            <div v-for="article in articles.data.data" :key="article.title" class="artikel-card">
-                <img src="~/assets/img/skill-icon/arduino.jpg" />
+            <div v-for="article in articles" :key="article.title" class="artikel-card">
+                <img :src="article.thumbnail_image" />
                 <div class="artikel-content">
-                    <p>{{ article.created_at }}</p>
+                    <p>{{ formatDateTime(article.created_at) }}</p>
                     <h3>{{ article.title }}</h3>
                 </div>
                 <div class="artikel-card-hover">
@@ -28,41 +28,33 @@
     </section>
 </template>
 
-<script setup lang="ts">
-// import { defineComponent } from '@vue/composition-api'
+<script setup>
+import { ref, onMounted } from 'vue';
 
-const articles = ref('');
+const articles = ref([]);
 
 const fetchData = async () => {
-    try{
-        const { data: datas } : any = await useAsyncData('articles', () => $fetch(`http://127.0.0.1:8000/api/article`));
-        articles.value = datas._value;
-    }catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}
+  const apiUrl = 'http://127.0.0.1:8000/api/article';
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    articles.value = data.data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+const formatDateTime = (dateTimeString) => {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = new Date(dateTimeString).toLocaleDateString('en-GB', options);
+  return formattedDate;
+};
 
 onMounted(() => {
   fetchData();
 });
-// export default defineComponent({
-//     setup() {
-        
-//     },
-
-//     data(){
-//         return{
-//             articleList: [
-//                 {title: "net", created_at: "12 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
-//                 {title: "test", created_at: "13 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
-//                 {title: "fer", created_at: "14 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
-//                 {title: "net", created_at: "15 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
-//                 {title: "ghe", created_at: "2 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
-//                 {title: "net", created_at: "1 September 2023", img: "~/assets/img/skill-icon/net.jpg", slug: "3"},
-//             ]
-//         }
-//     }
-// })
 </script>
 
 <style scoped>
