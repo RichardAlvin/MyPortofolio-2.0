@@ -36,7 +36,6 @@
 <script setup lang="ts">
 const route = useRoute();
 const {data: articleData} = await useFetch(`http://127.0.0.1:8000/api/article/${route.params.slug}`)
-console.log(articleData);
 </script>
 
 <style scoped>

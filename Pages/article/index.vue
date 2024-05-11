@@ -1,17 +1,17 @@
 <template>
     <section id="artikel-category">
         <div class="artikel-button">
-            <a @click="fetchArticles('software-engineer')"><div>Software Engineer</div></a>
-            <a href=""><div>Cloud & DevOps</div></a>
-            <a href=""><div>Machine Learning</div></a>
-            <a href=""><div>Embedded & IoT</div></a>
+            <a @click="changeCategory('software-engineer')"><div>Software Engineer</div></a>
+            <a @click="changeCategory('cloud-devops')"><div>Cloud & DevOps</div></a>
+            <a @click="changeCategory('artificial-intelligence')"><div>Machine Learning</div></a>
+            <a @click="changeCategory('embedded-iot')"><div>Embedded & IoT</div></a>
             <div style="background-color: grey;"></div>
-            <a href=""><div>Others</div></a>
+            <a @click="changeCategory('others')"><div>Others</div></a>
         </div>
     </section>
     <section id="artikel">
         <div class="artikel-list">
-            <div v-for="article in articles" :key="article.title" class="artikel-card">
+            <div v-for="article in articles.data" class="artikel-card">
                 <nuxt-link :to="`/article/${article.slug}`" style="text-decoration: none; color: inherit;">
                     <img :src="article.thumbnail_image" />
                     <div class="artikel-content">
@@ -24,9 +24,9 @@
                 </nuxt-link>
             </div>
         </div>
-        <div class="btn-load-more">
+        <!-- <div class="btn-load-more">
             <button>LOAD MORE</button>
-        </div>
+        </div> -->
         <!-- <nav aria-label="Pagination" v-if="metas.value && metas.value.last_page">
             <ul class="pagination">
                 <li v-for="index in metas.value.last_page" :key="index">Item {{ index }}</li>
@@ -36,27 +36,14 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+const categorySlug = ref(null);
+const apiUrl = computed(() => `http://127.0.0.1:8000/api/article?articleCategory=${categorySlug.value}`);
 
-const router = useRouter();
-
-const articles = ref([]);
-const metas = ref([]);
-
-const fetchData = async () => {
-  const apiUrl = 'http://127.0.0.1:8000/api/article';
-
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-
-    articles.value = data.data;
-    metas.value = data.meta;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-};
+//const response = await useFetch(apiUrl);
+//const data = await response.json();
+const { data: articles} = await useFetch(apiUrl);
+// articles.value = data.data;
+// metas.value = data.meta;
 
 const formatDateTime = (dateTimeString) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -64,17 +51,9 @@ const formatDateTime = (dateTimeString) => {
   return formattedDate;
 };
 
-const fetchArticles = async (category) => {
-  try {
-    await router.push({ path: '/article', query: { articleCategory: category } });
-  } catch (error) {
-    console.error('Error fetching articles:', error);
-  }
-};
-
-onMounted(() => {
-  fetchData();
-});
+function changeCategory(slug){
+    categorySlug.value = slug;
+}
 </script>
 
 <style scoped>
