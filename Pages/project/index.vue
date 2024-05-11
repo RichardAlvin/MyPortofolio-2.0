@@ -1,24 +1,24 @@
 <template>
     <section id="project-category">
         <div class="project-button">
-            <a href=""><div>Software Engineer</div></a>
-            <a href=""><div>Cloud & DevOps</div></a>
-            <a href=""><div>Machine Learning</div></a>
-            <a href=""><div>Embedded & IoT</div></a>
+            <a @click="changeCategory('software-engineer')"><div>Software Engineer</div></a>
+            <a @click="changeCategory('cloud-devops')"><div>Cloud & DevOps</div></a>
+            <a @click="changeCategory('artificial-intelligence')"><div>Machine Learning</div></a>
+            <a @click="changeCategory('embedded-iot')"><div>Embedded & IoT</div></a>
             <div style="background-color: grey;"></div>
-            <a href=""><div>Others</div></a>
+            <a @click="changeCategory('others')"><div>Others</div></a>
         </div>
     </section>
     <section id="project">
         <div class="project-list">
-            <div v-for="project in projectList" :key="project.title" class="project-card">
+            <div v-for="project in projects.data" class="project-card">
                 <div class="project-img">
-                    <img src="~/assets/img/skill-icon/net.jpg" />
+                    <!-- <img src="~/assets/img/skill-icon/net.jpg" /> -->
                 </div>
                 <div class="project-content">
                     <h3>{{ project.title }}</h3>
-                    <p>{{ project.created_at }}</p>
-                    <p>test test test test eorh goieh gioerg hoerhgoiergi eriogieor goi ergoier gero goierh ogie hriogherio goier hgoi erhhigo erogoeri gio oigeroigh geroigheor</p>
+                    <p>{{ formatDateTime(project.created_at) }}</p>
+                    <p>{{ project.body }}</p>
                 </div>
                 <div class="project-card-hover">
                     <p>><br>READ MORE</p>
@@ -31,27 +31,21 @@
     </section>
 </template>
 
-<script>
-import { defineComponent } from '@vue/composition-api'
+<script setup>
+const categorySlug = ref(null);
+const apiUrl = computed(() => `http://127.0.0.1:8000/api/project?projectCategory=${categorySlug.value}`);
 
-export default defineComponent({
-    setup() {
-        
-    },
+const { data: projects} = await useFetch(apiUrl);
 
-    data(){
-        return{
-            projectList: [
-                {title: "net", created_at: "12 September 2023", img: "assets/img/skill-icon/net.jpg", slug: "3"},
-                {title: "test", created_at: "13 September 2023", img: "/assets/img/skill-icon/net.jpg", slug: "3"},
-                {title: "fer", created_at: "14 September 2023", img: "/assets/img/skill-icon/net.jpg", slug: "3"},
-                {title: "net", created_at: "15 September 2023", img: "/assets/img/skill-icon/net.jpg", slug: "3"},
-                {title: "ghe", created_at: "2 September 2023", img: "/assets/img/skill-icon/net.jpg", slug: "3"},
-                {title: "net", created_at: "1 September 2023", img: "/assets/img/skill-icon/net.jpg", slug: "3"},
-            ]
-        }
-    }
-})
+const formatDateTime = (dateTimeString) => {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = new Date(dateTimeString).toLocaleDateString('en-GB', options);
+  return formattedDate;
+};
+
+function changeCategory(slug){
+    categorySlug.value = slug;
+}
 </script>
 
 <style scoped>
