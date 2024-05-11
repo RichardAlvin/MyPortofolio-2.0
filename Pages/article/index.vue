@@ -1,7 +1,7 @@
 <template>
     <section id="artikel-category">
         <div class="artikel-button">
-            <a href=""><div>Software Engineer</div></a>
+            <a @click="fetchArticles('software-engineer')"><div>Software Engineer</div></a>
             <a href=""><div>Cloud & DevOps</div></a>
             <a href=""><div>Machine Learning</div></a>
             <a href=""><div>Embedded & IoT</div></a>
@@ -12,26 +12,37 @@
     <section id="artikel">
         <div class="artikel-list">
             <div v-for="article in articles" :key="article.title" class="artikel-card">
-                <img :src="article.thumbnail_image" />
-                <div class="artikel-content">
-                    <p>{{ formatDateTime(article.created_at) }}</p>
-                    <h3>{{ article.title }}</h3>
-                </div>
-                <div class="artikel-card-hover">
-                    <p>><br>READ MORE</p>
-                </div>
+                <nuxt-link :to="`/article/${article.slug}`" style="text-decoration: none; color: inherit;">
+                    <img :src="article.thumbnail_image" />
+                    <div class="artikel-content">
+                        <p>{{ formatDateTime(article.created_at) }}</p>
+                        <h3>{{ article.title }}</h3>
+                    </div>
+                    <div class="artikel-card-hover">
+                        <p>><br>READ MORE</p>
+                    </div>
+                </nuxt-link>
             </div>
         </div>
         <div class="btn-load-more">
             <button>LOAD MORE</button>
         </div>
+        <!-- <nav aria-label="Pagination" v-if="metas.value && metas.value.last_page">
+            <ul class="pagination">
+                <li v-for="index in metas.value.last_page" :key="index">Item {{ index }}</li>
+            </ul>
+        </nav> -->
     </section>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const articles = ref([]);
+const metas = ref([]);
 
 const fetchData = async () => {
   const apiUrl = 'http://127.0.0.1:8000/api/article';
@@ -41,6 +52,7 @@ const fetchData = async () => {
     const data = await response.json();
 
     articles.value = data.data;
+    metas.value = data.meta;
   } catch (error) {
     console.error('Error fetching data:', error);
   }
@@ -50,6 +62,14 @@ const formatDateTime = (dateTimeString) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   const formattedDate = new Date(dateTimeString).toLocaleDateString('en-GB', options);
   return formattedDate;
+};
+
+const fetchArticles = async (category) => {
+  try {
+    await router.push({ path: '/article', query: { articleCategory: category } });
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+  }
 };
 
 onMounted(() => {
